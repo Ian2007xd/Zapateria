@@ -5,6 +5,8 @@
     box-sizing: border-box;
 }
 :root {
+    ---color-gris: #18191A;
+    --color-transparen: transparent;
     --color-body: #fff;
     --color-white: #fff;
     --color-black: #000;
@@ -21,6 +23,8 @@ body {
     /*background: linear-gradient(#0df8f9, #000);*/
 }
 body.dark {
+    ---color-gris: #18191A;
+    --color-transparen: #18191A;
     --color-body: #000;
     --color-white: #CCC;
     --color-black: #18191A;
@@ -37,15 +41,30 @@ MENU
     left: 0;
     height: 50px;
     width: 100%;
-    background-color: var(--color-black);
+    background-color: var(--color-transparen);
+    backdrop-filter: blur(20px);
     z-index: 100;
+}
+.nav.activeMenu {
+    background: var(--color-transparen);
+    padding: 1px;
+}
+.nav.activeMenu .logo,
+.nav.activeMenu a {
+    color: var(--color-white);
+}
+.nav.activeMenu a:hover {
+color: var(--color-blue);
+}
+.scrol {
+    height: auto;
 }
 .nav .nav-bar {
     position: relative;
     height: 100%;
     max-width: 1000px;
     width: 100%;
-    background-color: var(--color-black);
+    background-color: var(--color-transparen);
     margin: 0 auto;
     padding: 0 30px;
     display: flex;
@@ -149,7 +168,9 @@ MENU
     pointer-events: none;
 }
 
-/*BUCADOR*/
+/*
+BUCADOR
+*/
 .searchBox {
     position: relative;
 }
@@ -200,7 +221,6 @@ MENU
 body.dark .bar-menu input {
     color: var(--color-text);
 }
-
 .bar-menu i {
     position: absolute;
     color: var(--color-white);
@@ -211,9 +231,10 @@ body.dark .bar-menu input {
 body.dark .bar-menu i {
     color: var(--color-text);
 }
-
-/*AJUSTABLE*/
-@media (max-width: 790px) {
+/*
+MENU AJUSTABLE
+*/
+@media (max-width: 768px) {
     .nav .nav-bar .slideropen {
         display: block;
     }
@@ -259,154 +280,495 @@ body.dark .bar-menu i {
 
 
 /*------------------
-BTN FAVORITOS
---------------------*/
-.boton-2 {
-    display: flex;
-}
-.btn-2 {
-overflow: hidden;
-position: fixed;
-left: 1%;
-top: 10%;
-text-decoration: none;
-color: black;
-padding: 10px 15px;
-border-radius: 30px;
-box-shadow:
-0 0 0 0 rgba(143, 64, 248, 0.5),
-0 0 0 0 rgba(39, 200, 255, 0.5);
-transition: 
-transform 0.3s ease,
-box-shadow 0.3s ease;
-}
-.btn-2::after {
-    content: "";
-    width: 400px;
-    height: 400px;
-    position: absolute;
-    left: -100px;
-    top: -50px;
-    background-color: #ff3cac;
-    background-image: linear-gradient(225deg,
-    #27d86c 0%,
-    #26caf8 50%,
-    #c625d0 100%);
-    z-index: -100;
-    transition: transform 0.5s ease;
-}
-.btn-2:hover {
-    transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.5),
-    -10px 10px 25px 0 rgba(39, 200, 255, 0.5);
-}
-.btn-2:hover::after {
-    transform: rotate(150deg);
-}
-
-/*------------------
-BTN CARRITO
---------------------*/
-.boton-3 {
-    display: flex;
-}
-.btn-3 {
-overflow: hidden;
-position: fixed;
-left: 11%;
-top: 10%;
-text-decoration: none;
-color: black;
-padding: 10px 15px;
-border-radius: 30px;
-box-shadow:
-0 0 0 0 rgba(143, 64, 248, 0.5),
-0 0 0 0 rgba(39, 200, 255, 0.5);
-transition: 
-transform 0.3s ease,
-box-shadow 0.3s ease;
-}
-.btn-3::after {
-    content: "";
-    width: 400px;
-    height: 400px;
-    position: absolute;
-    left: -100px;
-    top: -50px;
-    background-color: #ff3cac;
-    background-image: linear-gradient(225deg,
-    #27d86c 0%,
-    #26caf8 50%,
-    #c625d0 100%);
-    z-index: -100;
-    transition: transform 0.5s ease;
-}
-.btn-3:hover {
-    transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.5),
-    -10px 10px 25px 0 rgba(39, 200, 255, 0.5);
-}
-.btn-3:hover::after {
-    transform: rotate(150deg);
-}
-
-/*------------------
 CARRUCEL
 --------------------*/
-.slider {
-    width: auto;
-    height: 350px;
-    margin: 110px auto 50;
-    overflow: hidden;
-}
-.slider ul {
-    display: flex;
-    animation: cambio 16s infinite alternate linear;
-    padding: 0;
-    width: 400%;
-}
-.slider li {
+.carrucel {
     width: 100%;
-    list-style: none;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -50px;
+    position: relative;
 }
-.slider img {
+.carrucel .list .item {
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.carrucel .list .item img {
     width: 100%;
     height: 100%;
+    object-fit: cover;  
 }
-
-@keyframes cambio {
-    0% {margin-left: 0%;}
-    20% {margin-left: 0%;}
-
-    25% {margin-left: -100%;}
-    45% {margin-left: -100%;}
-
-    50% {margin-left: -200%;}
-    70% {margin-left: -200%;}
-
-    75% {margin-left: -300%;}
-    100% {margin-left: -300%;}
-} 
-
+.carrucel .list .item .contect {
+    position: absolute;
+    top: 50%;
+    width: 1100px;
+    max-width: 45%;
+    left: 25%;
+    transform: translateX(-50%);
+    padding-right: 25px;
+    box-sizing: border-box;
+    color: var(--color-white);
+    text-shadow: 0 5px 10px #18191A;
+}
+.carrucel .list .item .autor {
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+.carrucel .list .item .contect .tittle,
+.carrucel .list .item .contect .topic {
+    font-weight: bold;
+    font-size: 2em;
+    line-height: 1.3em;
+}
+.carrucel .list .item .contect .topic {
+    color: var(--clr);
+}
+.carrucel .list .item .contect .btns-carrucel {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+}
+.carrucel .list .item .contect button {
+    border: none;
+    background-color: var(--color-white);
+    letter-spacing: 3px;
+    font-family: Poppins;
+    font-weight: 500;
+    cursor: pointer;
+}
+.carrucel .list .item .contect button:hover {
+    background-color: var(--color-blue);
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+    transition: .5s ease;
+}
+.carrucel .list .item .contect button a{
+    color: var(--color-black);
+    text-decoration: none;
+}
+.carrucel .list .item .contect button:nth-child(2) {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+}
+.carrucel .list .item .contect button:nth-child(2):hover {
+    background-color: var(--color-blue);
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+    transition: .5s ease;
+}
+.carrucel .list .item .contect button:nth-child(2) a {
+    color: var(--color-white);
+    text-decoration: none;
+}
 /*------------------
-TEXT CARRUCEL
+MINIATURAS
 --------------------*/
-.text p{
-    font-size: 2rem;
-    color: var(--color-white);
+.miniaturas {
     position: absolute;
-    top: 30%;
-    left: 5%;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    bottom: 10px;
+    left: 57%;
+    width: max-content;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
 }
-.text .p1{
-    font-size: 2rem;
-    color: var(--color-white);
+.miniaturas .item {
+    width: 120px;
+    height: 170px;
+    flex-shrink: 0;
+    position: relative;
+}
+.miniaturas .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.miniaturas .item .contect {
     position: absolute;
-    top: 35%;
-    left: 5%;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
 }
+.miniaturas .item .contect .tittle {
+    font-weight: bold;
+}
+/*------------------
+ARROWS
+--------------------*/
+.arrows {
+    position: absolute;
+    top: 60%;
+    right: -14%;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.arrows button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    font-family: monospace;
+    color: #fff;
+    font-weight: bold;
+    font-size: large;
+    transition: .5s;
+    z-index: 10;
+}
+.arrows button:hover {
+    background-color: #eee;
+    color: #555;
+}
+.carrucel .list .item:nth-child(1) {
+    z-index: 1;
+}
+.carrucel .list .item:nth-child(1) .autor,
+.carrucel .list .item:nth-child(1) .tittle,
+.carrucel .list .item:nth-child(1) .topic,
+.carrucel .list .item:nth-child(1) .descric,
+.carrucel .list .item:nth-child(1) .btns-carrucel {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s 1s linear 1 forwards;
+}
+@keyframes showContent {
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+.carrucel .list .item:nth-child(1) .tittle {
+    animation-delay: 1s;
+}
+.carrucel .list .item:nth-child(1) .topic {
+    animation-delay: 1.2s;
+}
+.carrucel .list .item:nth-child(1) .descric {
+    animation-delay: 1.4s;
+}
+.carrucel .list .item:nth-child(1) .btns-carrucel {
+    animation-delay: 1.6s;
+}
+/*------------------
+EFECTO SIGUIENTE
+--------------------*/
+.carrucel.next .list .item:nth-child(1) img {
+    width: 120px;
+    height: 170px;
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    border-radius: 20px;
+    animation: showImage .5s linear 1 forwards;
+}
+@keyframes showImage {
+    to{
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+.carrucel.next .miniaturas .item:nth-child(1) {
+    width: 0;
+    overflow: hidden;
+    animation: showMini .5s linear 1 forwards;
+}
+@keyframes showMini {
+    to {
+        width: 120px;
+    }
+}
+.carrucel.next .miniaturas {
+    transform: translateX(120px);
+    animation: tranformMIni .5s linear 1 forwards;
+}
+@keyframes tranformMIni {
+    to {
+        transform: translateX(0px);
+    }
+}
+/*------------------
+EFECTO ANTERIOR
+--------------------*/
+.carrucel.prev .list .item:nth-child(2) {
+    z-index: 2;
+}
+.carrucel.prev .list .item:nth-child(2) img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: autImage .5s linear 1 forwards;
+}
+@keyframes autImage {
+    to {
+            width: 120px;
+            height: 170px;
+            border-radius: 20px;
+            left: 58%;
+            bottom: 10px;
+    }
+}
+.carrucel.prev .miniaturas .item:nth-child(1) {
+    width: 0;
+    overflow: hidden;
+    animation: showMini .5s linear 1 forwards;
+}
+.carrucel.prev .list .item:nth-child(2) .autor,
+.carrucel.prev .list .item:nth-child(2) .tittle,
+.carrucel.prev .list .item:nth-child(2) .topic,
+.carrucel.prev .list .item:nth-child(2) .descric,
+.carrucel.prev .list .item:nth-child(2) .btns {
+    animation: contectOut 1.5s linear 1 forwards;
+}
+@keyframes contectOut {
+    to{
+        transform: translateY(-120px);
+        transform: translateY(-50px); 
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+.carrucel.next .arrows button,
+.carrucel.prev .arrows button {
+    pointer-events: none;
+}
+/*------------------
+TIME
+--------------------*/
+.time {
+    width: 0%;
+    height: 5px;
+    background-color: var(--color-blue);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+.carrucel.next .time,
+.carrucel.prev .time {
+    width: 100%;
+    animation: timeRunning linear 1 forwards;
+}
+@keyframes timeRunning {
+    to{
+        width: 0;
+    }
+}
+/*------------------
+SLIDER AJUSTABLE
+--------------------*/
+@media (max-width: 1024px) {
+    /*CARRUCEL*/
+    .carrucel {
+        width: 100%;
+        height: 80%;
+    }
+    .carrucel .list .item img {
+        width: 100%;
+        height: 100%;
+    }
+    .carrucel .list .item .contect {
+        position: absolute;
+        left: 35%;
+        top: 45%;
+        max-width: 60%;
+    }
+    /*------------------
+    MINIATURAS
+    --------------------*/
+    .miniaturas {
+        position: absolute;
+        left: 65%;
+        gap: 5px;
+        }
+    .miniaturas .item {
+        width: 80px;
+        height: 130px;
+    }
+    .miniaturas .item .contect {
+        bottom: 5px;
+        left: 5px;
+        right: 5px;
+    }
+    .miniaturas .item .contect .tittle {
+        font-size: 12px;
+    }
+    /*------------------
+    ARROWS
+    --------------------*/
+    .arrows {
+        top: 55%;
+        right: -19%;
+    }
+    /*------------------
+    EFECTO SIGUIENTE
+    --------------------*/
+    .carrucel.next .list .item:nth-child(1) img {
+        width: 80px;
+        height: 130px;
+    }
+    @keyframes showMini {
+        to {
+            width: 80px;
+        }
+    }
+    .carrucel.next .miniaturas {
+        transform: translateX(80px);
+    }
+    /*------------------
+    EFECTO ANTERIOR
+    --------------------*/
+    @keyframes autImage {
+        to {
+                width: 80px;
+                height: 130px;
+                border-radius: 20px;
+                left: 65%;
+                bottom: 10px;
+        }
+    }
+    }
+@media (max-width: 768px) {
+    .miniaturas {
+        opacity: 0;
+    }
+    .carrucel {
+        width: 100%;
+        height: 80%;
+    }
+    .carrucel .list .item img {
+        width: 100%;
+        height: 100%;
+    }
+    .carrucel .list .item .contect {
+        position: absolute;
+        left: 45%;
+        top: 50%;
+        max-width: 80%;
+    }
+    .carrucel .list .item .contect .tittle{
+        font-size: 13px;
+    }
+    .carrucel .list .item .contect .topic {
+        font-size: 15px;
+    }
+    .carrucel .list .item .contect .btns-carrucel {
+        grid-template-columns: repeat(2, 90px);
+        gap: 10px;
+        margin-top: 5px;
+    }
+    .carrucel .list .item .contect button {
+        letter-spacing: 1px;
+    }
+    /*------------------
+    ARROWS
+    --------------------*/
+    .arrows {
+        top: 78%;
+        right: -14%;
+    }
+    .carrucel.prev .list .item:nth-child(2) {
+        opacity: 0;
+    }
+}
+@media (max-width: 660px) {
+    .miniaturas {
+        opacity: 0;
+    }
+    .carrucel {
+        width: 100%;
+        height: 80%;
+    }
+    .carrucel .list .item img {
+        width: 100%;
+        height: 100%;
+    }
+    .carrucel .list .item .contect {
+        position: absolute;
+        left: 45%;
+        top: 50%;
+        max-width: 80%;
+    }
+    .carrucel .list .item .contect .tittle{
+        font-size: 13px;
+    }
+    .carrucel .list .item .contect .topic {
+        font-size: 15px;
+    }
+    .carrucel .list .item .contect .btns-carrucel {
+        grid-template-columns: repeat(2, 90px);
+        gap: 10px;
+        margin-top: 5px;
+    }
+    .carrucel .list .item .contect button {
+        letter-spacing: 1px;
+    }
+    /*------------------
+    ARROWS
+    --------------------*/
+    .arrows {
+        top: 83%;
+        right: -14%;
+    }
+    .carrucel.prev .list .item:nth-child(2) {
+        opacity: 0;
+    }
+}
+@media (max-width: 475px) {
+    .miniaturas {
+        opacity: 0;
+    }
+    .carrucel {
+        width: 100%;
+        height: 80%;
+    }
+    .carrucel .list .item img {
+        width: 100%;
+        height: 100%;
+    }
+    .carrucel .list .item .contect {
+        position: absolute;
+        left: 45%;
+        top: 45%;
+        max-width: 80%;
+    }
+    .carrucel .list .item .contect .tittle{
+        font-size: 13px;
+    }
+    .carrucel .list .item .contect .topic {
+        font-size: 15px;
+    }
+    .carrucel .list .item .contect .btns-carrucel {
+        grid-template-columns: repeat(2, 90px);
+        gap: 10px;
+        margin-top: 5px;
+    }
+    .carrucel .list .item .contect button {
+        letter-spacing: 1px;
+    }
+    /*------------------
+    ARROWS
+    --------------------*/
+    .arrows {
+        top: 82%;
+        right: -10%;
+    }
+    .carrucel.prev .list .item:nth-child(2) {
+        opacity: 0;
+    }
+}
+
 
 /*------------------
 BTN UBICACION
@@ -557,7 +919,7 @@ PRODUCTOS
     display: flex;
     margin: 0px auto 20;
     font-size: 1.5rem;
-    color: #000;
+    color: var(--color-text);
     position: relative;
     justify-content: center;
     align-items: center;
@@ -702,6 +1064,7 @@ MENU DE REDES SOCIALES
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
 }
 .menu-redes li {
     position: absolute;

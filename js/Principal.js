@@ -1,3 +1,6 @@
+/*
+MENU
+*/
 const body = document.querySelector("body"), 
         nav = document.querySelector("nav"), 
         modeToggle = document.querySelector(".darlight"), 
@@ -40,43 +43,91 @@ menuToggle.onclick = function(){
     menuRedes.classList.toggle("activeColor");
 };
 
+window.addEventListener("scroll", function(){
+    nav.classList.toggle("activeMenu",window.scrollY > 0);
+});
+
+
 /*
-const coords = {x: 0, y: 10};
-const circles = document.querySelectorAll(".circle");
+CARRUCEL
+*/
+let nextDom = document.getElementById("next");
+let prevDom = document.getElementById("prev");
+let carrucelDom = document.querySelector(".carrucel");
+let listDom = document.querySelector(".carrucel .list");
+let miniaturasDom = document.querySelector(".carrucel .miniaturas");
+let itemSlider = document.querySelectorAll (".carrucel .list .item");
+let itemMiniatura = document.querySelectorAll (".carrucel .miniaturas .item");
 
-circles.forEach(function (circle) {
-circle.x = 0;
-circle.y = 0;
-});
+nextDom.onclick = function(){
+    showSlider("next");
+}
+prevDom.onclick = function(){
+    showSlider ("prev");
+}
+let timeRunning = 1500;
+let runTimeOut;
 
-window.addEventListener("mousemove", function(e){
-coords.x = e.clientX;
-coords.y = e.clientY;
-    
-animateCircles();
-});
-    
-function animateCircles() {
-let x = coords.x;
-let y = coords.y;
-    
-circles.forEach(function (circle, index) {
-circle.style.left = x - 12 + "px";
-circle.style.top = y - 12 + "px";
+function showSlider(params) {
 
-circle.style.scale = (circles.length - index) / circles.length;
+    if (params === "next") {
+        listDom.appendChild(itemSlider[0]);
+        miniaturasDom.appendChild(itemMiniatura[0]);
+        carrucelDom.classList.add("next");
+    } else {
+        listDom.prepend(itemSlider[itemSlider.length -1]);
+        miniaturasDom.prepend(itemMiniatura[itemMiniatura.length -1]);
+        carrucelDom.classList.add("prev");
+    }
 
-circle.x = x;
-circle.y = y;
-    
-const nextCircle = circles[index + 1] || circles[0];
-x += (nextCircle.x - x) * 0.3; 
-y += (nextCircle.y - y) * 0.3;
-});
-
-requestAnimationFrame(animateCircles);
-
+    clearTimeout(runTimeOut);
+    runTimeOut = setTimeout(() =>{
+        carrucelDom.classList.remove("next");
+        carrucelDom.classList.remove("prev");
+    }, timeRunning)
 }
 
-animateCircles();
-*/
+/*let nextDom = document.getElementById('next');
+let prevDom = document.getElementById('prev');
+
+let carouselDom = document.querySelector('.carrucel');
+let SliderDom = carouselDom.querySelector('.carrucel .list');
+let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+let timeDom = document.querySelector('.carrucel .time');
+
+thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+let timeRunning = 3000;
+let timeAutoNext = 7000;
+nextDom.onclick = function(){
+    showSlider('next');    
+}
+prevDom.onclick = function(){
+    showSlider('prev');    
+}
+let runTimeOut;
+let runNextAuto = setTimeout(() => {
+    next.click();
+}, timeAutoNext)
+function showSlider(type){
+    let  SliderItemsDom = SliderDom.querySelectorAll('.carrucel .list .item');
+    let thumbnailItemsDom = document.querySelectorAll('.carrucel .miniaturas .item');
+
+    if(type === 'next'){
+        SliderDom.appendChild(SliderItemsDom[0]);
+        thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+        carouselDom.classList.add('next');
+    }else{
+        SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+        thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
+        carouselDom.classList.add('prev');
+    }
+    clearTimeout(runTimeOut);
+    runTimeOut = setTimeout(() => {
+        carouselDom.classList.remove('next');
+        carouselDom.classList.remove('prev');
+    }, timeRunning);
+    clearTimeout(runNextAuto);
+    runNextAuto = setTimeout(() => {
+        next.click();
+    }, timeAutoNext)
+}*/
