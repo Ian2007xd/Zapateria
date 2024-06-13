@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAPATERIA CP</title>
     <link rel="stylesheet" href="css/Principal.css">
+    <link rel="stylesheet" href="css/NavBar.css">
 </head>
 <body>
     <!--MENU-->
@@ -25,17 +26,14 @@
             <i class="fa-solid fa-x sliderclose"></i>
             </div>
             <ul class="nav-links">
-                <li><a href="">Informacion</a></li>
-                <li><a href="">Servicios</a></li>
-                <li><a href="">Ayuda</a></li>
+                <li><a href="informacion.html">Informacion</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="contactos.html">Contactos</a></li>
                 <li><a href="">
                     <i class="fa-solid fa-heart"></i>
                 </a></li>
                 <li><a href="">
                     <i class="fa-solid fa-cart-shopping"></i>
-                </a></li>
-                <li><a href="principal.html">
-                    <i class="fa-solid fa-user"></i>
                 </a></li>
             </ul>
             </div>
@@ -54,6 +52,30 @@
                         <input type="text" placeholder="Buscar...">
                         <i class="fa-brands fa-searchengin"></i>
                     </div>
+                </div>
+            </div>
+
+            <div class="perfil">
+                <div class="file" onclick="perfilToggle();">
+                    <img src="Img/Anal.jpeg">
+                </div>
+                <div class="options">
+                    <h3>
+                        SUS
+                        <br>
+                        <span>
+                            izazagaariel@gmail.com
+                        </span>
+                    </h3>
+                    <ul>
+                        <li><i class="fa-solid fa-user"></i><a href="principal.html">MI PERFIL</a></li>
+                        <li><i class="fa-solid fa-pen-to-square"></i><a href="#">EDITAR PERFIL</a></li>
+                        <li><i class="fa-solid fa-inbox"></i><a href="#">BANDEJA DE ENTREGA</a></li>
+                        <li><i class="fa-solid fa-gear"></i><a href="#">AJUSTES</a></li>
+                        <li><i class="fa-solid fa-question"></i><a href="#">AYUDA</a></li>
+                        <li><i class="fa-solid fa-shuffle"></i></i><a href="#">CAMBIAR CUENTA</a></li>
+                        <li><i class="fa-solid fa-circle-xmark"></i><a href="php/cerrarS.php">CERRAR SESION</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -123,13 +145,6 @@
         </div>
         <div class="miniaturas">
             <div class="item">
-                <img src="Img/NIKE PURPPLE.webp" alt="">
-                <div class="contect">
-                    <div class="tittle">RTFKT x Nike Dunk Genesis Forging</div>
-                    <div class="des">Info...</div>
-                </div>
-            </div>
-            <div class="item">
                 <img src="Img/jordan 1 mid.jpg" alt="">
                 <div class="contect">
                     <div class="tittle">JORDAN 1 MID AMARILLOS</div>
@@ -150,6 +165,13 @@
                     <div class="des">Info...</div>
                 </div>
             </div>
+            <div class="item">
+                <img src="Img/NIKE PURPPLE.webp" alt="">
+                <div class="contect">
+                    <div class="tittle">RTFKT x Nike Dunk Genesis Forging</div>
+                    <div class="des">Info...</div>
+                </div>
+            </div>
         </div>
         <div class="arrows">
             <button id="prev"><</button>
@@ -158,9 +180,7 @@
         <div class="time"></div>
     </div>
 
-    <!--ETIQUETAS-->
-
-
+    <!--CATALOGOS-->
     <div class="text-catalogos">
             <p>
                 <b>CATALOGOS</b>
@@ -173,13 +193,13 @@
             </div>
         </div>
         <div class="secciones">
-            <img src="Img/Niños.jpg" alt="">
+            <img src="Img/Ni+¦os.jpg" alt="">
             <div class="categorias">
                 <h1><a href="#">NIÑOS</a></h1>
             </div>
         </div>
         <div class="secciones">
-            <img src="Img/caballero.jpeg" alt="">
+            <img src="Img/NIKE PURPPLE.webp" alt="">
             <div class="categorias">
                 <h1><a href="#">CABALLERO</a></h1>
             </div>
@@ -191,10 +211,10 @@
                         <img src="Img/Dama.jpg" alt="">
                     </li>
                     <li>
-                        <img src="Img/Niños.jpg" alt="">
+                        <img src="Img/Ni+¦os.jpg" alt="">
                     </li>
                     <li>
-                        <img src="Img/caballero.jpeg" alt="">
+                        <img src="Img/NIKE PURPPLE.webp" alt="">
                     </li>
                 </ul>
             <div class="categorias">
@@ -326,7 +346,7 @@
         </div>
         <div class="product-card">
             <div class="product-img">
-                <img src="Img/Araña.png" alt="DC COURT GRAFFIK">
+                <img src="Img/Ara+¦a.png" alt="DC COURT GRAFFIK">
                 <span class="descuento">-25%</span>
                 <div class="btn-group">
                     <span>
@@ -392,6 +412,7 @@
     </ul>
 
     <script src="js/Principal.js"></script>
+    <script src="js/BarMenu.js"></script>
     <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
 </body>
 </html>

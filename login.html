@@ -6,7 +6,6 @@
     <title>LOGIN</title>
 </head>
 <body>
-
     <script src="https://kit.fontawesome.com/81581fb069.js"
     crossorigin="anonymous"></script>
 
@@ -51,22 +50,22 @@
     </div>
 
     <?php
-    include ("")
+        include ("php/loginUser.php");
     ?>
     <div class="login">
-        <form action="" class="form-login">
+        <form action="" method="post" class="form-login">
             <h1>LOGIN</h1>
             <div class="input-box">
-                <input type="text" placeholder="Correo..." required>
+                <input type="email" name="user" placeholder="Correo..." required>
                 <i class="fa-solid fa-envelope"></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password..." required>
-                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="pass" id="pass" placeholder="Password..." required>
+                <i class="fa-solid fa-eye-slash"></i>
             </div>
             <div class="contra">
                 <label>
-                    <input type="checkbox">Guardar contraseña...
+                    <input type="checkbox" onclick="Verpass(this);">Ver contraseña
                 </label>
                 <a href="#">¿Olvidaste la contraseña?</a>
             </div>
@@ -80,5 +79,14 @@
             </div>
         </form>
     </div>
+    <script>
+    function Verpass (ck) {
+        if (ck.checked) {
+            $('#pass').attr("type", "text");
+        } else {
+            $('#pass').attr("type", "password");
+        }
+    }
+    </script>
 </body>
 </html>

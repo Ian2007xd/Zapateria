@@ -12,7 +12,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(#fff, #000);
+    background: #000;
+    /*linear-gradient(#fff, #000);*/
     background-size: cover;
     background-position: center;
     }
